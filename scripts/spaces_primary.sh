@@ -9,10 +9,11 @@ if ! [ -x "$(command -v yabai)" ]; then
 fi
 
 SPACES_PRIMARY=$(yabai -m query --spaces --display 1)
+APPS_PRIMARY=$(yabai -m query --windows --display 1)
 
 echo $(cat <<-EOF
 {
-  "spaces_primary": $SPACES_PRIMARY
+  "spaces_primary": {"apps": $APPS_PRIMARY, "spaces": $SPACES_PRIMARY}
 }
 EOF
 )

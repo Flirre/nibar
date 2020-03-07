@@ -8,11 +8,12 @@ if ! [ -x "$(command -v yabai)" ]; then
   exit 1
 fi
 
-SPACES_SECONDARY=$(yabai -m query --spaces --display 2)
+# SPACES_SECONDARY=$(yabai -m query --spaces --display 2)
+# APPS_SECONDARY=$(yabai -m query --windows --display 2)
 
 echo $(cat <<-EOF
 {
-  "spaces_secondary": $SPACES_SECONDARY
+  "spaces_secondary": {"apps": $APPS_SECONDARY", spaces": $SPACES_SECONDARY}
 }
 EOF
 )

@@ -1,17 +1,17 @@
-import Desktop from "./lib/Desktop.jsx";
-import Error from "./lib/Error.jsx";
-import parse from "./lib/parse.jsx";
-import styles from "./lib/styles.jsx";
+import Desktop from './lib/Desktop.jsx';
+import Error from './lib/Error.jsx';
+import parse from './lib/parse.jsx';
+import styles from './lib/styles.jsx';
 
 const style = {
-  padding: "0 8px",
-  display: "grid",
-  gridAutoFlow: "column",
-  gridGap: "16px",
-  position: "fixed",
-  overflow: "hidden",
-  left: "0px",
-  top: "0px",
+  padding: '0 8px',
+  display: 'grid',
+  gridAutoFlow: 'column',
+  gridGap: '16px',
+  position: 'fixed',
+  overflow: 'hidden',
+  left: '0px',
+  top: '0px',
   fontFamily: styles.fontFamily,
   lineHeight: styles.lineHeight,
   fontSize: styles.fontSize,
@@ -19,19 +19,21 @@ const style = {
   fontWeight: styles.fontWeight
 };
 
-export const refreshFrequency = false;
-export const command = "./nibar/scripts/spaces_primary.sh";
+export const refreshFrequency = 1000 * 60;
+export const command = './nibar/scripts/spaces_primary.sh';
 
 export const render = ({ output }) => {
   const data = parse(output);
-  if (typeof data === "undefined") {
+  const spaces = data.spaces_primary.spaces;
+  const apps = data.spaces_primary.apps;
+  if (typeof data === 'undefined') {
     return (
       <div style={style}>
         <Error msg="Error: unknown script output" side="left" />
       </div>
     );
   }
-  if (typeof data.error !== "undefined") {
+  if (typeof data.error !== 'undefined') {
     return (
       <div style={style}>
         <Error msg={`Error: ${data.error}`} side="left" />
@@ -40,7 +42,7 @@ export const render = ({ output }) => {
   }
   return (
     <div style={style}>
-      <Desktop output={data.spaces_primary} />
+      <Desktop output={spaces} apps={apps} />
     </div>
   );
 };

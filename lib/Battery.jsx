@@ -1,9 +1,22 @@
-import styles from "./styles.jsx";
+import styles from './styles.jsx';
 
 const render = ({ output }) => {
   let charging = output.charging;
   let percentage = output.percentage;
   let remaining = output.remaining;
+  let battery = '';
+  if (percentage < 76) {
+    battery = '';
+  }
+  if (percentage < 51) {
+    battery = '';
+  }
+  if (percentage < 26) {
+    battery = '';
+  }
+  if (percentage < 10) {
+    battery = '';
+  }
   return (
     <div>
       <div
@@ -13,7 +26,12 @@ const render = ({ output }) => {
             : null
         }
       >
-        <span>{charging ? "􀋦" : null} {percentage}%</span>
+        <span>
+          <span style={{ fontFamily: 'FontAwesome' }}>
+            {charging ? '􀋦' : battery}
+          </span>{' '}
+          {percentage}% ({remaining})
+        </span>
       </div>
     </div>
   );

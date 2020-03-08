@@ -22,6 +22,8 @@ WIFI_SSID=$(networksetup -getairportnetwork en0 | cut -c 24-)
 
 DND=$(defaults -currentHost read com.apple.notificationcenterui doNotDisturb)
 
+INPUT=$(defaults read ~/Library/Preferences/com.apple.HIToolbox.plist AppleSelectedInputSources | egrep -w 'KeyboardLayout Name' | cut -c 33- | sed 's/.$//')
+
 echo $(cat <<-EOF
 {
     "datetime": {
@@ -40,6 +42,7 @@ echo $(cat <<-EOF
         "status": "$WIFI_STATUS",
         "ssid": "$WIFI_SSID"
     },
+    "input": $INPUT,
     "dnd": $DND
 }
 EOF

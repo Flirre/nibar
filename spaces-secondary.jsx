@@ -10,7 +10,7 @@ const style = {
   gridGap: '16px',
   position: 'fixed',
   overflow: 'hidden',
-  left: '218px',
+  left: '0px',
   top: '0px',
   fontFamily: styles.fontFamily,
   lineHeight: styles.lineHeight,
@@ -24,9 +24,8 @@ export const command = './nibar/scripts/spaces_secondary.sh';
 
 export const render = ({ output }) => {
   const data = parse(output);
-  console.log('secondary', typeof data === 'undefined');
-  const spaces = data ? data.spaces_secondary.spaces : [];
-  const apps = data ? data.spaces_secondary.apps[1] : [];
+  const spaces = data.spaces_secondary.spaces;
+  const apps = data.spaces_secondary.apps;
 
   if (typeof data === 'undefined') {
     return <div style={style}></div>;
@@ -36,8 +35,7 @@ export const render = ({ output }) => {
   }
   return (
     <div style={style}>
-      <span> | </span>
-      <Desktop output={data.spaces_secondary} apps={apps} />
+      <Desktop output={spaces} apps={apps} />
     </div>
   );
 };

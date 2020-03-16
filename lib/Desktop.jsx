@@ -26,40 +26,72 @@ const desktopStyle = {};
 
 const renderAppIcon = (appName, focused) => {
   let className = null;
-  if (appName == 'Google Chrome') {
-    className = 'la la-chrome';
-  } else if (appName == 'Firefox Developer Edition') {
-    className = 'la la-firefox';
-  } else if (appName == 'Emacs' || appName == 'Code') {
-    className = 'la la-code';
-  } else if (appName == 'Mail') {
-    className = 'far fa-envelope';
-  } else if (appName == 'Todoist') {
-    className = 'la la-list';
-  } else if (appName == 'Finder') {
-    className = 'far fa-folder';
-  } else if (appName == 'Messages') {
-    className = 'far fa-comments';
-  } else if (appName == 'Ferdi') {
-    className = 'fa fa-comments';
-  } else if (appName == 'Calendar') {
-    className = 'la la-calendar';
-  } else if (appName == 'kitty') {
-    className = 'la la-terminal';
-  } else if (appName == 'Xcode') {
-    className = 'fab fa-xing';
-  } else if (appName == 'Spotify') {
-    className = 'la la-spotify';
-  } else if (appName == 'Preview') {
-    className = 'la la-file-text';
-  } else if (appName == 'None') {
-    className = 'la la-circle';
-  } else if (appName == 'System Preferences') {
-    className = 'la la-cog';
-  } else {
-    console.log(appName);
-    className = 'la la-question-circle';
+  switch (appName) {
+    case 'Aseprite':
+      className = 'fas fa-paint-brush';
+      break;
+    case 'Bitwarden':
+      className = 'fas fa-shield-alt';
+      break;
+    case 'Google Chrome':
+      className = 'la la-chrome';
+      break;
+    case 'Firefox Developer Edition':
+      className = 'la la-firefox';
+      break;
+    case 'Godot':
+      className = 'fas fa-gamepad';
+      break;
+    case 'Emacs':
+      className = 'la la-code';
+      break;
+    case 'Code':
+      className = 'la la-code';
+      break;
+    case 'Mail':
+      className = 'far fa-envelope';
+      break;
+    case 'Finder':
+      className = 'far fa-folder';
+      break;
+    case 'Messages':
+      className = 'far fa-comments';
+      break;
+    case 'Ferdi':
+      className = 'fa fa-comments';
+      break;
+    case 'Calendar':
+      className = 'la la-calendar';
+      break;
+    case 'kitty':
+      className = 'la la-terminal';
+      break;
+    case 'Xcode':
+      className = 'fab fa-xing';
+      break;
+    case 'Slack':
+      className = 'fab fa-slack';
+      break;
+    case 'Spotify':
+      className = 'la la-spotify';
+      break;
+    case 'Teams':
+      className = 'fab fa-microsoft';
+      break;
+    case 'Preview':
+      className = 'la la-file-text';
+      break;
+    case 'System Preferences':
+      className = 'la la-cog';
+      break;
+    case 'None':
+      className = 'la la-circle';
+      break;
+    default:
+      className = 'la la-question-circle';
+      break;
   }
+
   const fontScale = className.slice(0, 2) == 'fa' ? '1.5em' : '1.1em';
   return (
     <i
